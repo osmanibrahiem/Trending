@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Trending</string>
+    <string name="tab_text_1">All</string>
+    <string name="tab_text_2">Movie</string>
+    <string name="tab_text_3">TV</string>
+    <string name="tab_text_4">Person</string>
+
+    <string name="message_no_internet">Sorry There is no Internet connection !!</string>
+    <string name="empty_list">No related results available.</string>
+    <string name="vote_count_header">vote count :&#160;</string>
+    <string name="vote_average_header">vote average :&#160;</string>
+    <string name="popularity_header">popularity :&#160;</string>
+    <string name="media_type_header">media type :&#160;</string>
+    <string name="overview_header">overview</string>
+</resources>

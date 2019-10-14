@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.facebook.shimmer.ShimmerFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:shimmer="http://schemas.android.com/tools"
+    android:id="@+id/shimmer_view_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    shimmer:duration="800">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.05" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.95" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/root"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="986:355"
+            app:layout_constraintEnd_toEndOf="@id/guideline_end"
+            app:layout_constraintStart_toStartOf="@id/guideline_start"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/image_layout"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/item_marginStartEnd"
+                android:layout_marginBottom="@dimen/item_marginStartEnd"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="331:255"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="@color/placeholder"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.comix.rounded.RoundedCornerImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@color/transparent"
+                    app:cornerColor="@color/white"
+                    app:cornerRadius="4dip"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:id="@+id/item_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/image_layout"
+                app:layout_constraintTop_toTopOf="@id/image_layout">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/placeholder_text_height"
+                    android:layout_marginStart="15dip"
+                    android:layout_marginTop="5dip"
+                    android:background="@color/placeholder" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/placeholder_text_height"
+                    android:layout_marginStart="15dip"
+                    android:layout_marginTop="5dip"
+                    android:background="@color/placeholder" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/placeholder_text_height"
+                    android:layout_marginStart="15dip"
+                    android:layout_marginTop="5dip"
+                    android:background="@color/placeholder" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="6">
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/placeholder_text_height"
+                        android:layout_marginStart="15dip"
+                        android:layout_marginTop="5dip"
+                        android:layout_marginEnd="15dip"
+                        android:layout_weight="4"
+                        android:background="@color/placeholder" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/item_marginStartEnd"
+                android:orientation="horizontal"
+                android:weightSum="7"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@id/item_title">
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/placeholder_text_height"
+                    android:layout_marginStart="15dip"
+                    android:layout_marginTop="5dip"
+                    android:layout_marginEnd="15dip"
+                    android:layout_marginBottom="@dimen/item_marginStartEnd"
+                    android:layout_weight="2"
+                    android:background="@color/placeholder" />
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.facebook.shimmer.ShimmerFrameLayout>

@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="movie"
+            type="com.osman.trending.model.Movie" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/movie_appBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:id="@+id/movie_toolbar_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fitsSystemWindows="true"
+                app:contentScrim="?attr/colorPrimary"
+                app:expandedTitleMarginBottom="@dimen/movie_details_title_margin"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/movie_iv_placeholder"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/movie_details_cover_height"
+                    android:scaleType="centerCrop"
+                    android:src="@{movie.posterPath}"
+                    android:tint="@color/movie_details_cover_tint"
+                    app:layout_collapseMode="parallax"
+                    app:layout_collapseParallaxMultiplier="0.9" />
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/movie_toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    app:contentInsetStart="0dp"
+                    app:contentInsetStartWithNavigation="0dp"
+                    app:layout_collapseMode="pin"
+                    app:layout_collapseParallaxMultiplier="0.1"
+                    app:popupTheme="@style/AppTheme.PopupOverlay"
+                    app:subtitle="@string/app_name"
+                    app:title="@{movie.title}" />
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none"
+            app:behavior_overlapTop="@dimen/movie_details_overlapTop_height"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|top"
+                android:layout_margin="@dimen/movie_details_card_margin"
+                app:cardElevation="@dimen/movie_details_card_elevation"
+                app:cardUseCompatPadding="true"
+                app:contentPadding="@dimen/movie_details_card_contentPadding">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/title"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/movie_details_title_height"
+                        android:ellipsize="end"
+                        android:gravity="center_vertical"
+                        android:maxLines="2"
+                        android:textColor="@color/primaryText"
+                        android:textSize="@dimen/movie_details_title_text_size"
+                        tools:text="@{movie.title}" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="@{movie.voteCount==null ? View.GONE : View.VISIBLE}">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/Field.Header"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/vote_count_header" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/vote_count"
+                            style="@style/Field.Details"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            tools:text="@{movie.voteCount.toString()}" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="@{movie.voteAverage==null ? View.GONE : View.VISIBLE}">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/Field.Header"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/vote_average_header" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/vote_average"
+                            style="@style/Field.Details"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            tools:text="@{movie.voteAverage.toString()}" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="@{movie.popularity==null ? View.GONE : View.VISIBLE}">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/Field.Header"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/popularity_header" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/popularity"
+                            style="@style/Field.Details"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            tools:text="@{movie.popularity.toString()}" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="@{movie.mediaType==null ? View.GONE : View.VISIBLE}">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/Field.Header"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/media_type_header" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/media_type"
+                            style="@style/Field.Details"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            tools:text="@{movie.mediaType}" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/overview_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="@{movie.overview==null ? View.GONE : View.VISIBLE}">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/Field.Header"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/overview_header" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/overview"
+                            style="@style/Field.Details"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            tools:text="@{movie.overview}" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>
